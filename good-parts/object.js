@@ -2,8 +2,6 @@
  * Created by fs on 15.02.15.
  */
 
-    alert("Fuu");
-
 var empty_object = {};
 
 var flight = {
@@ -11,11 +9,11 @@ var flight = {
     number: 815,
     departure: {
         IATA: "SYD",
-        time: "2004-09-22 14:55",
+        time: "2014-09-22 14:55",
         city: "Sydney"
     }, arrival: {
         IATA: "LAX",
-        time: "2004-09-23 10:42",
+        time: "2014-09-23 10:42",
         city: "Los Angeles"
     } };
 
@@ -41,7 +39,7 @@ if (typeof Object.create !== 'function') {
     };
 }
 
-var flight = Object.create(flight);
+flight = Object.create(flight);
 
 // ******
 // Reflection

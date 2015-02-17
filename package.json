@@ -1,0 +1,22 @@
+{
+  "name": "js-hacks",
+  "version": "1.0.0",
+  "description": "some fucking awesome java script code snippets",
+  "main": "index.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fs123/js-hacks"
+  },
+  "author": "FS & MB @ FHNW",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fs123/js-hacks/issues"
+  },
+  "homepage": "https://github.com/fs123/js-hacks",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
+}
