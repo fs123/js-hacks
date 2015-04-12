@@ -1,10 +1,13 @@
 /**
  * Created by fs on 12.04.15.
  */
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
+    // load all grunt tasks matching the ['grunt-*', '@*/grunt-*'] patterns
+    // https://www.npmjs.com/package/load-grunt-tasks
     require('load-grunt-tasks')(grunt);
 
+    // load tasks from the specified Grunt plugin, which must be installed locally via npm
     grunt.loadNpmTasks('grunt-karma');
 
     // Project configuration.
@@ -30,11 +33,11 @@ module.exports = function(grunt) {
     });
 
 
-    grunt.registerTask('test', [ 'karma:single' ]);
+    grunt.registerTask('test', ['karma:single']);
 
-    grunt.registerTask('auto-test', [ 'karma:unit' ]);
+    grunt.registerTask('auto-test', ['karma:unit']);
 
-    grunt.registerTask('build', [ 'bundle', 'copy' ]);
+    grunt.registerTask('build', ['bundle', 'copy']);
 
     // Default task(s).
     grunt.registerTask('default', ['test', 'build']);
