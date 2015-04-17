@@ -1,10 +1,14 @@
-describe("karma initial test", function(){
+'use strict';
 
-    var helloInEnglish = sayHelloInEnglish();
-    var helloInSpanish = sayHelloInSpanish();
+var sayHello = require('../lib/greetings.js');
 
-    it("should say hello in english and spanish", function() {
-        expect(helloInEnglish).toEqual("Hello");
-        expect(helloInSpanish).toEqual("Hola");
+describe("Greetings can say", function(){
+
+    it("hello in english", function() {
+        expect(sayHello.sayHelloInEnglish()).toEqual("Hello");
+    });
+
+    it("hello in spanish", function() {
+        expect(sayHello.sayHelloInSpanish()).toEqual("Hola");
     });
 });

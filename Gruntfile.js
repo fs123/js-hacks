@@ -1,6 +1,4 @@
-/**
- * Created by fs on 12.04.15.
- */
+'use strict';
 module.exports = function (grunt) {
 
     // load all grunt tasks matching the ['grunt-*', '@*/grunt-*'] patterns
@@ -18,16 +16,59 @@ module.exports = function (grunt) {
             tests: 'test',
             dist: '../js-hacks/dist'
         },
+
+        clean: ["./output/"],
+
         karma: {
+            single: {
+                configFile: 'test/karma.conf.js',
+                singleRun: true,
+                autoWatch: false
+            },
             unit: {
-                configFile: '<%= config.tests %>/karma.conf.js'
+                configFile: 'test/karma.conf.js'
             }
         },
-        bundle: {
-            hello: {
-                name: 'hello-world',
-                src: '<%= config.sources %>/SayHello.js',
-                dest: '<%= config.dist %>'
+
+        browserify: {
+            options: {
+                watch: false,
+                browserifyOptions: {
+                    debug:true // include source maps.
+                }
+            },
+            dev: {
+                expand: true,
+                src: './lib/**/*.js',
+                dest: './output/',
+                options: {
+                    keepAlive: false
+                }
+            },
+            package: {
+                expand: true,
+                src: './lib/**/*.js',
+                dest: './output/',
+                options: {
+                    keepAlive: false
+                }
+            }
+        },
+
+        jshint: {
+            lib: {
+                src: ['Gruntfile.js', 'lib/**/*.js', 'test/**/*.js'],
+                options: { // see http://jshint.com/docs/options/
+                    ignores: ['./lib/GoodParts/*.js'],
+                    browser: true,
+                    node: true,
+                    strict: true,
+                    curly: true,
+                    eqeqeq: true,
+                    forin: true,
+                    freeze: true,
+                    jasmine: true
+                }
             }
         }
     });
@@ -37,9 +78,8 @@ module.exports = function (grunt) {
 
     grunt.registerTask('auto-test', ['karma:unit']);
 
-    grunt.registerTask('build', ['bundle', 'copy']);
+    grunt.registerTask('build', ['clean', 'browserify:package']);
 
-    // Default task(s).
-    grunt.registerTask('default', ['test', 'build']);
+    grunt.registerTask('default', ['jshint', 'test', 'build']);
 
 };

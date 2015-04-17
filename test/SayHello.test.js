@@ -1,16 +1,11 @@
-/**
- * Created by fs on 11.04.15.
- */
+'use strict';
+
+var sayHello = require('../lib/SayHello');
 
 
-var sayHello = require('../lib/SayHello.js');
-
-describe("A suite is just a function", function() {
-    var a;
-
-    it("and so is a spec", function() {
-        a = true;
-        expect(a).toBe(true);
+describe("The Module SayHello", function() {
+    it("answers with Hello World", function() {
+        expect(sayHello.sayHello()).toBe("...*hello world*...");
     });
 });
 
