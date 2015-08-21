@@ -1,2 +1,2 @@
 # js-hacks
-some fucking awesome java script code snippets
+some fucking awesome java script code snippets !
